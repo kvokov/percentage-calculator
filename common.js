@@ -6,29 +6,14 @@ $(document).ready(function() {
 		total: 		$('#total'),
 		profit: 	$('#profit')
 	}
-	var activeField = undefined;
-	var perviousFiels = undefined;
+	var activeField 	= undefined;
+	var perviousFiels 	= undefined;
 
 	/* on keyup calculate by active field */
-	i.cost.bind('keyup', function() {
-		activeField = 'cost';
-		calculate();
-	});
-
-	i.discount.bind('keyup', function() {
-		activeField = 'discount';
-		calculate();
-	});
-
-	i.total.bind('keyup', function() {
-		activeField = 'total';
-		calculate();
-	});
-
-	i.profit.bind('keyup', function() {
-		activeField = 'profit';
-		calculate();
-	});
+	i.cost.bind('keyup', function() { activeField = 'cost'; calculate(); });
+	i.discount.bind('keyup', function() { activeField = 'discount'; calculate(); });
+	i.total.bind('keyup', function() { activeField = 'total'; calculate(); });
+	i.profit.bind('keyup', function() { activeField = 'profit'; calculate(); });
 
 	/* on blur save pervious field */
 	i.cost.bind('blur', function() { perviousFiels = 'cost'; });
@@ -45,28 +30,23 @@ $(document).ready(function() {
 			profit: 	parseFloat(i.profit.val())
 		}
 
-		console.log('activeField = ' + activeField);
-		console.log('perviousFiels = ' + perviousFiels);
-
 		switch(activeField) {
 			case 'cost':
 				calulateByCost(v);
 				break;
-
 			case 'discount':
 				calulateByDiscount(v);
 				break;
-
 			case 'total':
 				calulateByTotal(v);
 				break;
-
 			case 'profit':
 				calulateByProfit(v);
 				break;
 		}
 		
 	}
+
 	function calulateByCost(v) {
 		if(activeField != 'cost' || isNaN(v.cost)) { return; }
 
@@ -164,4 +144,3 @@ $(document).ready(function() {
 	}
 
 });
-
